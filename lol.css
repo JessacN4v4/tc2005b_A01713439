@@ -1,3 +1,25 @@
+/*minimizar a una linea en cssminifier. cssminify
+crean otra variante pa add al html */
+
 body{
     font-family: "Helvetica", "Arial", sans-serif;
 }
+/* Se la asigna a la etiqueta (body, head, etc*/
+ li{
+    color: darkgray;
+ }
+/*Clase se define con un punto*/
+ .tanques{
+    color: red;
+ }
+
+/* Selector de id*/
+
+ #vi{
+    font-size: large;
+ }
+/* Pseudo clase*/
+ .tanques:hover{
+    font-size: large;
+    color : purple;
+ }
