@@ -6,36 +6,52 @@
             margin: 0 auto;
             max-width: 50em;
         }
+        h3 {
+            margin-top: 1em;
+            padding-top: 1em;
+        }   
+
+        h4 {
+            padding-top: 0.5em;
+        }
+
     </style>
+    <link rel="stylesheet"href="lab_2.css">
     
 </head>
 <body>
 
-    <header> <p>Esto hace la etiqueta <strong>header</strong></p></header>
+    <header> <p style="color: rgb(33, 179, 28); font-weight: 800;" class="cabeza">
+        Datos del desarrolador -> Preguntas: Laboratorio 1 -> Preguntas: Laboratorio 2</p></header>
     
     <h2>Datos del desarrollador</h2>
-    <p>Nombre:  José Juan Nava Ramírez</p>
-    <p>Matrícula: A01713439</p>
-    <p>Correo institucional: A17134439@tec.mx</p>
+    <p class="nombre_desarrolador">Nombre:  José Juan Nava Ramírez</p>
+    <p class="matricula">Matrícula: A01713439</p>
+    <p class="correo_desarrollador">Correo institucional: A17134439@tec.mx</p>
+    <p id="Solicitud_CRL">Solicitud de amistad en Clash Royale:
+        <a href="https://link.clashroyale.com/invite/friend/es/?platform=iOS&tag=GCCCL0UUL&token=z83wrdwx#">
+            https://link.clashroyale.com/invite
+        </a>
+    </p>
 
 
-    <h2>Preguntas</h2>
+    <h2>Preguntas: Laboratorio 1</h2>
     <ul>
-        <li><strong>¿Cuál es la diferencia entre Internet y la World Wide Web?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Internet es una red global de computadoras interconectadas que 
             permite la comunicación entre dispositivos, por otro lado la 
             World Wide Web es un sistema de información que se ejecuta 
             sobre Internet, son documentos interconectados mediante 
             hipervínculos</p>
 
-        <li><strong>¿Cuáles son las partes de un URL?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Cuáles son las partes de un URL?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Las partes de un URL son: el protocolo, el dominio, la ruta y los parámetros </p>
 
-        <li><strong>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, 
-            PATCH, DELETE?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, 
+            PATCH, DELETE?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p><ul>
             <li>GET: Recuperar información de un recurso</li>
             <li>HEAD: Obtener solo los encabezados de una solicitud GET</li>
@@ -45,43 +61,43 @@
             <li>DELETE: Eliminar un recurso del servidor</li>
         </ul></p>
 
-        <li><strong>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo
-             cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo
+             cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>POST, ya que este método permite enviar datos al servidor de manera segura, 
             evitando que la información sensible como el usuario y contraseña se 
             exponga en la URL</p>
         
-        <li><strong>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a
-             una página a través de un URL?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a
+             una página a través de un URL?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>GET, por que este método se utiliza para solicitar información de un recurso específico,
              como una página web, y es el método predeterminado para acceder a recursos a través 
              de un navegador web</p>
 
-        <li><strong>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa 
-            esto? ¿Ocurrió algún error?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa 
+            esto? ¿Ocurrió algún error?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Significa que la solicitud HTTP fue exitosa. No hay ningún error.</p>
 
-        <li><strong>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
+        <li><h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
             reporta que intentó acceder al sitio y se encontró con un error 404?
-             ¿Por qué?</strong></li>
-        <h4>Respuesta:</h4>
+             ¿Por qué?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Sí, ya que este error indica que la página solicitada no se encontró en 
             el servidor</p>
         
-        <li><strong>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
+        <li><h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
             reporta que intentó acceder al sitio y se encontró con un error 500? 
-            ¿Por qué?</strong></li>
-        <h4>Respuesta:</h4>
+            ¿Por qué?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Sí, por que este error indica un problema interno del servidor que impide que 
             el sitio web funcione 
             correctamente</p>
 
-        <li><strong>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? 
-            Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? 
+            Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Un atributo HTML5 está depreciado o desaprobado (deprecated) cuando se ha marcado como 
             obsoleto, su uso no es recomendado y puede ser eliminado en futuras versiones de HTML. 
             Algunos elementos de HTML 4 que están desaprobados en HTML5 son:</p>
@@ -99,8 +115,8 @@
 
         </ul></p>
 
-        <li><strong>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p><ul>
             <li><strong>Nuevos elementos semánticos:</strong> HTML5 introdujo nuevos elementos 
                 como <strong>header</strong>, 
@@ -123,29 +139,29 @@
 
         </ul></p>
 
-        <li><strong>¿Qué componentes de estructura y estilo tiene una tabla?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Los componentes de estructura de una tabla son: <strong>table</strong>, <strong>tr</strong>,
              <strong>th</strong> y <strong>td</strong>. 
             Los componentes de estilo de una tabla pueden incluir atributos como <strong>border</strong>, 
             <strong>cellpadding</strong>, <strong>cellspacing</strong>, entre otros, que permiten 
             personalizar la apariencia de la tabla.</p>
 
-        <li><strong>¿Cuáles son los principales controles de una forma HTML5?</strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Cuáles son los principales controles de una forma HTML5?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>Los principales controles de una forma HTML5 incluyen: <strong>input</strong>, 
             <strong>textarea</strong>, <strong>select</strong>, <strong>button</strong>, entre otros, 
             que permiten a los usuarios ingresar datos y realizar acciones en un formulario.</p>
     
-        <li><strong>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </strong></li>
-        <h4>Respuesta:</h4>
+        <li><h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
         <p>El navegador que utilizo es Google Chrome y tiene un soporte de HTML5 de 526 puntos según el 
             sitio: <a href="http://html5test.com/">http://html5test.com/</a></p>
 
-        <li><strong>Sobre el ciclo de vida y desarrollo de los sistemas de información:</strong></li>
+        <li><h3>Sobre el ciclo de vida y desarrollo de los sistemas de información:</h3></li>
         <p><ol>
             <li><strong>¿Cuál es el ciclo de vida de los sistemas de información?</strong></li>
-            <h4>Respuesta:</h4>
+            <h4 id="respuesta">Respuesta:</h4>
             <p>El ciclo de VIDA de los sistemas de información consta de las siguientes fases:</p>
             <p><ul>
                 <li><strong>Planificación:</strong> En esta fase se identifican las necesidades del 
@@ -166,7 +182,7 @@
             </ul></p>
 
             <li><strong>¿Cuál es el ciclo de DESARROLLO de sistemas de información?</strong></li>
-            <h4>Respuesta:</h4>
+            <h4 id="respuesta">Respuesta:</h4>
             <p>El ciclo de desarrollo de sistemas de información es un proceso iterativo que 
                 incluye las siguientes etapas:</p>
             <p><ul>
@@ -187,7 +203,7 @@
             </ul></p>
         </ol></p>
     </ul>
-    <h2>Links a referencias</h2>
+    <h3>Links a referencias: Laboratorio 1</h3>
     <p><ol>
         <li><a href="https://www.w3schools.com/html/html5_intro.asp">
             https://www.w3schools.com/html/html5_intro.asp</a></li>
@@ -198,6 +214,46 @@
         <li><a href="http://html5test.com/">http://html5test.com/</a></li>
         <li><a href="https://www.w3.org/TR/2011/WD-html5-diff-20110405/">
             https://www.w3.org/TR/2011/WD-html5-diff-20110405/</a></li>
+    </ol></p>
+
+    <h2>Preguntas: Laboratorio 2</h2>
+    
+    <ul>
+        <li><h3>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de 
+            !important en un CSS? </h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p>Mi recomendación es evitar el uso de !important en un CSS por que puede dificultar el 
+            mantenimiento y la escalabilidad del código, el uso excesivo de !important puede hacer 
+            que sea difícil entender y depurar el código, ya que anula la cascada normal de estilos
+             y puede generar conflictos con otros estilos.</p>    
+
+        <li><h3>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con 
+            cuidado?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p>Ya que una imagen de fondo puede afectar la legibilidad del contenido, el rendimiento de la
+             página y la experiencia del usuario.</p>
+
+        <li><h3>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades
+             de un propiedad de estilo entre %, px y pt?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p>Yo creo que debe utilizarse unidades relativas como % para propiedades de estilo que deben
+             adaptarse a diferentes tamaños de pantalla y dispositivos, mientras que las unidades
+              absolutas (px o pt) pueden ser útiles para propiedades que requieren un tamaño
+               fijo, como el tamaño de fuente en ciertos casos.</p>
+
+        <li><h3>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del 
+            sitio?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p>Mejora el rendimiento del sitio ya que al reducir el tamaño del archivo CSS, se 
+            reduce el tiempo de carga de la página y mejora la experiencia del usuario.</p>
+    </ul>
+
+    <h3>Links a referencias: Laboratorio 2</h3>
+    <p><ol>
+        <li><a href="https://www.w3schools.com/css/">https://www.w3schools.com/css/</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
+            https://developer.mozilla.org/en-US/docs/Web/CSS</a></li>
+        <li><a href="https://css-tricks.com/">https://css-tricks.com/</a></li>
     </ol></p>
 
     <footer><a href="https://code.visualstudio.com/"> Link a Visual Studio Code </a> </footer>
