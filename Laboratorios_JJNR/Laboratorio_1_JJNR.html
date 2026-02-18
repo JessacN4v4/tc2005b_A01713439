@@ -15,16 +15,20 @@
             padding-top: 0.5em;
         }
 
+        header{
+            text-align: center;
+        }
+
     </style>
     <link rel="stylesheet"href="lab_2mini.css">
     
 </head>
 <body>
 
-    <header> <p style="color: rgb(33, 179, 28); font-weight: 800;" class="cabeza">
-        Datos del desarrolador -> Preguntas: Laboratorio 1 -> Preguntas: Laboratorio 2</p></header>
+    <header id ="indice"> <h2>Índice</h2></header>
     
-    <h2>Datos del desarrollador</h2>
+    <h2 id = "datos_desarrollador">Datos del desarrollador</h2>
+
     <p class="nombre_desarrolador">Nombre:  José Juan Nava Ramírez</p>
     <p class="matricula">Matrícula: A01713439</p>
     <p class="correo_desarrollador">Correo institucional: A17134439@tec.mx</p>
@@ -35,7 +39,7 @@
     </p>
 
 
-    <h2>Preguntas: Laboratorio 1</h2>
+    <h2 id = "preguntas_lab_1">Preguntas: Laboratorio 1</h2>
     <ul>
         <li><h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3></li>
         <h4 id="respuesta">Respuesta:</h4>
@@ -216,7 +220,7 @@
             https://www.w3.org/TR/2011/WD-html5-diff-20110405/</a></li>
     </ol></p>
 
-    <h2>Preguntas: Laboratorio 2</h2>
+    <h2 id="preguntas_lab_2">Preguntas: Laboratorio 2</h2>
     
     <ul>
         <li><h3>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de 
@@ -256,6 +260,112 @@
         <li><a href="https://css-tricks.com/">https://css-tricks.com/</a></li>
     </ol></p>
 
-    <footer><a href="https://code.visualstudio.com/"> Link a Visual Studio Code </a> </footer>
+    <h2 id="funciones_lab_4">Funciones Laboratorio 4</h2>
+    
+    <button id="btn_tabla" style="padding:10px">Tabla de cuadrados y cubos</button>
+    <button id="btn_suma" style="padding:10px">Suma de 2 números</button>
+    <button id="btn_data" style="padding:10px">Datos del arreglo</button>
+    <button id="btn_promedios" style="padding:10px">Promedios del arreglo</button>
+    <button id="btn_inverso" style="padding:10px">Numero inverso</button>
 
+    <h3>Problema de leet code:</h3>
+    <p>Se le proporcionan dos matrices de números enteros ordenadas en orden no decreciente, 
+    y dos números enteros, que representan la cantidad de elementos en las matrices respectivamente.
+        </p>
+    <p>Se deben fusionar ambas matrices en una única matriz ordenada en orden no decreciente.
+        </p>
+    <p>La función no debe devolver la matriz ordenada final, sino almacenarla dentro de la matriz 1. 
+    Para ello, esta matriz 1 debe tener una longitud de los dos números enteros proporcionados sumados
+    , donde los primeros melementos indican los elementos que deben fusionarse y los últimos 
+    elementos se establecen en 0, por lo que deben ignorarse. La segunda matriz tiene
+     una longitud de n.
+        </p>
+
+    <button id="btn_problema" style="padding:10px">Solucion al problema</button>
+
+    <h2 id = "preguntas_lab_4">Preguntas: Laboratorio 4</h2>
+
+    <ul>
+        <li><h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p><strong>Diferencias:</strong></p>
+        
+        <p><ul>
+            <li>Paradigma de programación:</li>
+            <p>
+            Java es un lenguaje de programación orientado a objetos, mientras que JavaScript es 
+            un lenguaje de programación que admite la POO y programación funcional.
+            </p>
+            <li>Entorno de ejecución:</li>
+            <p>
+            Java se ejecuta en la máquina virtual de Java (JVM), lo que lo hace independiente de 
+            la plataforma, mientras que JavaScript se ejecuta principalmente en navegadores web.
+            </p>               
+            <li>Tipado:</li>
+            <p>
+            Java es un lenguaje de tipado estático, lo que significa que las variables deben 
+            declararse con un tipo específico, mientras que JavaScript es un lenguaje de tipado 
+            dinámico, lo que permite asignar diferentes tipos de datos a una variable sin 
+            necesidad de declararla con un tipo específico.
+        </ul></p>
+        
+        <p><strong>Semejanzas:</strong></p>
+
+        <p><ul>
+            <li>JavaScript y Java comparten una sintaxis similar en muchas estructuras de control, 
+            como bucles y condicionales.</li>
+            
+            <li>Ambos lenguajes permiten la creación de objetos y funciones, aunque con 
+            diferentes enfoques.</li>
+            
+        </ul></p>
+
+        <li><h3>¿Qué métodos tiene el objeto Date?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p><ul>
+            <li><strong>getDate()</strong>: Devuelve el día del mes de una fecha.</li>
+            <li><strong>getMonth()</strong>: Devuelve el mes de una fecha, donde 0 representa 
+            enero y 11 representa diciembre.</li>
+            <li><strong>getFullYear()</strong>: Devuelve el año completo de una fecha.</li>
+            <li><strong>getHours()</strong>: Devuelve la hora de una fecha.</li>
+            <li><strong>getMinutes()</strong>: Devuelve los minutos de una fecha.</li>
+        </ul></p>
+
+        <li><h3>¿Qué métodos tienen los arreglos?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p><ul>
+            <li><strong>push()</strong>: Agrega uno o más elementos al final de un arreglo.</li>
+            <li><strong>pop()</strong>: Elimina el último elemento de un arreglo.</li>
+            <li><strong>shift()</strong>: Elimina el primer elemento de un arreglo.</li>
+            <li><strong>unshift()</strong>: Agrega uno o más elementos al inicio de un arreglo.</li>
+            <li><strong>slice()</strong>: Devuelve una copia de una porción del arreglo.</li>
+        </ul></p>
+
+        <li><h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>  
+        <p>Se declara una variable con alcance local dentro de una función utilizando la palabra 
+            clave <strong>let</strong> o <strong>const</strong>, en lugar de <strong>var</strong>. 
+            Por ejemplo: let miVariable = "Hola";
+        </p>
+
+        <li><h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3></li>
+        <h4 id="respuesta">Respuesta:</h4>
+        <p>Utilizar variables globales dentro de funciones puede causar problemas de mantenimiento 
+        y legibilidad del código, ya que las funciones pueden modificar variables globales sin 
+        que se note claramente en su firma.</p>
+    </ul>
+
+    <h3>Links a referencias: Laboratorio 4</h3>
+    <p><ol>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></li>
+        <li><a href="https://www.w3schools.com/js/">
+            https://www.w3schools.com/js/</a></li>
+        <li><a href="https://javascript.info/">
+            https://javascript.info/</a></li>
+    </ol></p>
+
+
+    <footer><a href="https://code.visualstudio.com/"> Link a Visual Studio Code </a> </footer>
+<script src="lab_3.js"></script>
 </body>

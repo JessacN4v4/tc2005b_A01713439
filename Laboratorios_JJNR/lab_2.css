@@ -7,6 +7,16 @@ body{
     background-color: #2c2b2b;
 }
 
+header{
+    padding-top: 1em;
+    position: sticky;
+}
+
+footer{
+    padding: 1em;
+    text-align: center;
+}
+
 .cabeza:hover{
     font-family: 'Courier New', Courier, monospace;
 }
