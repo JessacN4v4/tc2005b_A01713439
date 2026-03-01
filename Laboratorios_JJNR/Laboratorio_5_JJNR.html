@@ -3,15 +3,19 @@
     <title> Laboratorio 1 JJNR </title>
     
     <link
-        rel="stylesheet"href="lab_2.css">
+        rel="stylesheet"href="lab_2mini.css">
     </link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    
+</style>
+
     
 
 </head>
-<body>
-    <header id ="indice"> <h2>Índice</h2></header>
+<body class="m-auto">
+    <header id ="indice" class="box has-background-info"> <h2 class="title is-4 has-text-black">Índice</h2></header>
     
-    <h2 id = "datos_desarrollador">Datos del desarrollador</h2>
+    <h2 id = "datos_desarrollador" class="encabezado_1">Datos del desarrollador</h2>
 
     <p class="nombre_desarrolador">Nombre:  José Juan Nava Ramírez</p>
     <p class="matricula">Matrícula: A01713439</p>
@@ -23,24 +27,24 @@
     </p>
 
 
-    <h2 id = "preguntas_lab_1">Preguntas: Laboratorio 1</h2>
+    <h2 id = "preguntas_lab_1" class="encabezado_1">Preguntas: Laboratorio 1</h2>
 
-    <ul>
-        <li><h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+    <ul class="content">
+        <li><h3 class="pregunta">¿Cuál es la diferencia entre Internet y la World Wide Web?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Internet es una red global de computadoras interconectadas que 
             permite la comunicación entre dispositivos, por otro lado la 
             World Wide Web es un sistema de información que se ejecuta 
             sobre Internet, son documentos interconectados mediante 
             hipervínculos</p>
 
-        <li><h3>¿Cuáles son las partes de un URL?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Cuáles son las partes de un URL?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Las partes de un URL son: el protocolo, el dominio, la ruta y los parámetros </p>
 
-        <li><h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, 
+        <li><h3 class="pregunta">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, 
             PATCH, DELETE?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p><ul>
             <li>GET: Recuperar información de un recurso</li>
             <li>HEAD: Obtener solo los encabezados de una solicitud GET</li>
@@ -50,43 +54,43 @@
             <li>DELETE: Eliminar un recurso del servidor</li>
         </ul></p>
 
-        <li><h3>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo
+        <li><h3 class="pregunta">¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo
             cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>POST, ya que este método permite enviar datos al servidor de manera segura, 
             evitando que la información sensible como el usuario y contraseña se 
             exponga en la URL</p>
         
-        <li><h3>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a
+        <li><h3 class="pregunta">¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a
             una página a través de un URL?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>GET, por que este método se utiliza para solicitar información de un recurso específico,
             como una página web, y es el método predeterminado para acceder a recursos a través 
             de un navegador web</p>
 
-        <li><h3>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa 
+        <li><h3 class="pregunta">Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa 
             esto? ¿Ocurrió algún error?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Significa que la solicitud HTTP fue exitosa. No hay ningún error.</p>
 
-        <li><h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
+        <li><h3 class="pregunta">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
             reporta que intentó acceder al sitio y se encontró con un error 404?
             ¿Por qué?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Sí, ya que este error indica que la página solicitada no se encontró en 
             el servidor</p>
         
-        <li><h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
+        <li><h3 class="pregunta">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario 
             reporta que intentó acceder al sitio y se encontró con un error 500? 
             ¿Por qué?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Sí, por que este error indica un problema interno del servidor que impide que 
             el sitio web funcione 
             correctamente</p>
 
-        <li><h3>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? 
+        <li><h3 class="pregunta">¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? 
             Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Un atributo HTML5 está depreciado o desaprobado (deprecated) cuando se ha marcado como 
             obsoleto, su uso no es recomendado y puede ser eliminado en futuras versiones de HTML. 
             Algunos elementos de HTML 4 que están desaprobados en HTML5 son:</p>
@@ -104,8 +108,8 @@
 
         </ul></p>
 
-        <li><h3>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p><ul>
             <li><strong>Nuevos elementos semánticos:</strong> HTML5 introdujo nuevos elementos 
                 como <strong>header</strong>, 
@@ -125,32 +129,31 @@
                 API de geolocalización, la API de almacenamiento local, la API de arrastrar y
                 soltar, entre otras, que permiten a los desarrolladores crear aplicaciones
                 web más interactivas y funcionales.</li>
+            </ul></p>
 
-        </ul></p>
-
-        <li><h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Qué componentes de estructura y estilo tiene una tabla?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Los componentes de estructura de una tabla son: <strong>table</strong>, <strong>tr</strong>,
             <strong>th</strong> y <strong>td</strong>. 
             Los componentes de estilo de una tabla pueden incluir atributos como <strong>border</strong>, 
             <strong>cellpadding</strong>, <strong>cellspacing</strong>, entre otros, que permiten 
             personalizar la apariencia de la tabla.</p>
 
-        <li><h3>¿Cuáles son los principales controles de una forma HTML5?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Cuáles son los principales controles de una forma HTML5?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Los principales controles de una forma HTML5 incluyen: <strong>input</strong>, 
             <strong>textarea</strong>, <strong>select</strong>, <strong>button</strong>, entre otros, 
             que permiten a los usuarios ingresar datos y realizar acciones en un formulario.</p>
     
-        <li><h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>El navegador que utilizo es Google Chrome y tiene un soporte de HTML5 de 526 puntos según el 
             sitio: <a href="http://html5test.com/">http://html5test.com/</a></p>
 
-        <li><h3>Sobre el ciclo de vida y desarrollo de los sistemas de información:</h3></li>
+        <li><h3 class="pregunta">Sobre el ciclo de vida y desarrollo de los sistemas de información:</h3></li>
         <p><ol>
             <li><strong>¿Cuál es el ciclo de vida de los sistemas de información?</strong></li>
-            <h4 id="respuesta">Respuesta:</h4>
+            <h4 class="respuesta">Respuesta:</h4>
             <p>El ciclo de VIDA de los sistemas de información consta de las siguientes fases:</p>
             <p><ul>
                 <li><strong>Planificación:</strong> En esta fase se identifican las necesidades del 
@@ -171,7 +174,7 @@
             </ul></p>
 
             <li><strong>¿Cuál es el ciclo de DESARROLLO de sistemas de información?</strong></li>
-            <h4 id="respuesta">Respuesta:</h4>
+            <h4 class="respuesta">Respuesta:</h4>
             <p>El ciclo de desarrollo de sistemas de información es un proceso iterativo que 
                 incluye las siguientes etapas:</p>
             <p><ul>
@@ -192,8 +195,8 @@
             </ul></p>
         </ol></p>
     </ul>
-    <h3>Links a referencias: Laboratorio 1</h3>
-    <p><ol>
+    <h3 class="pregunta">Links a referencias: Laboratorio 1</h3>
+    <p><ol class="content has-text-centered">
         <li><a href="https://www.w3schools.com/html/html5_intro.asp">
             https://www.w3schools.com/html/html5_intro.asp</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
@@ -205,74 +208,82 @@
             https://www.w3.org/TR/2011/WD-html5-diff-20110405/</a></li>
     </ol></p>
 
-    <h2 id="preguntas_lab_2">Preguntas: Laboratorio 2</h2>
     
-    <ul>
-        <li><h3>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de 
+    <h2 id="preguntas_lab_2" class="encabezado_1">Preguntas: Laboratorio 2</h2>
+    
+    <ul class="content">
+        <li><h3 class="pregunta">Como ingeniero de software ¿cuál es tu recomendación sobre el uso de 
             !important en un CSS? </h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Mi recomendación es evitar el uso de !important en un CSS por que puede dificultar el 
             mantenimiento y la escalabilidad del código, el uso excesivo de !important puede hacer 
             que sea difícil entender y depurar el código, ya que anula la cascada normal de estilos
             y puede generar conflictos con otros estilos.</p>    
 
-        <li><h3>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con 
+        <li><h3 class="pregunta">Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con 
             cuidado?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Ya que una imagen de fondo puede afectar la legibilidad del contenido, el rendimiento de la
             página y la experiencia del usuario.</p>
 
-        <li><h3>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades
+        <li><h3 class="pregunta">Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades
             de un propiedad de estilo entre %, px y pt?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Yo creo que debe utilizarse unidades relativas como % para propiedades de estilo que deben
             adaptarse a diferentes tamaños de pantalla y dispositivos, mientras que las unidades
             absolutas (px o pt) pueden ser útiles para propiedades que requieren un tamaño
             fijo, como el tamaño de fuente en ciertos casos.</p>
 
-        <li><h3>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del 
+        <li><h3 class="pregunta">¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del 
             sitio?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Mejora el rendimiento del sitio ya que al reducir el tamaño del archivo CSS, se 
             reduce el tiempo de carga de la página y mejora la experiencia del usuario.</p>
     </ul>
 
-    <h3>Links a referencias: Laboratorio 2</h3>
-    <p><ol>
+    <h3 class="pregunta">Links a referencias: Laboratorio 2</h3>
+    <p><ol class="content has-text-centered">
         <li><a href="https://www.w3schools.com/css/">https://www.w3schools.com/css/</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
             https://developer.mozilla.org/en-US/docs/Web/CSS</a></li>
         <li><a href="https://css-tricks.com/">https://css-tricks.com/</a></li>
     </ol></p>
 
-    <h2 id="funciones_lab_4">Funciones Laboratorio 4</h2>
     
-    <button id="btn_tabla" style="padding:10px">Tabla de cuadrados y cubos</button>
-    <button id="btn_suma" style="padding:10px">Suma de 2 números</button>
-    <button id="btn_data" style="padding:10px">Datos del arreglo</button>
-    <button id="btn_promedios" style="padding:10px">Promedios del arreglo</button>
-    <button id="btn_inverso" style="padding:10px">Numero inverso</button>
+    <h2 id="funciones_lab_4" class="encabezado_1">Funciones Laboratorio 4</h2>
+    
+    <div class="buttons is-centered">
+        <button id="btn_tabla" style="padding:10px"  class="button is-black">Tabla de cuadrados y cubos</button>
+        <button id="btn_suma" style="padding:10px"  class="button is-black">Suma de 2 números</button>
+        <button id="btn_data" style="padding:10px"  class="button is-black">Datos del arreglo</button>
+        <button id="btn_promedios" style="padding:10px"  class="button is-black">Promedios del arreglo</button>
+        <button id="btn_inverso" style="padding:10px"  class="button is-black">Numero inverso</button>
+    </div>
+    
 
-    <h3>Problema de leet code:</h3>
-    <p>Se le proporcionan dos matrices de números enteros ordenadas en orden no decreciente, 
+    <h3 class="pregunta">Problema de leet code:</h3>
+    <p class="content">Se le proporcionan dos matrices de números enteros ordenadas en orden no decreciente, 
     y dos números enteros, que representan la cantidad de elementos en las matrices respectivamente.
         </p>
-    <p>Se deben fusionar ambas matrices en una única matriz ordenada en orden no decreciente.
+    <p class="content">Se deben fusionar ambas matrices en una única matriz ordenada en orden no decreciente.
         </p>
-    <p>La función no debe devolver la matriz ordenada final, sino almacenarla dentro de la matriz 1. 
+    <p class="content">La función no debe devolver la matriz ordenada final, sino almacenarla dentro de la matriz 1. 
     Para ello, esta matriz 1 debe tener una longitud de los dos números enteros proporcionados sumados
     , donde los primeros melementos indican los elementos que deben fusionarse y los últimos 
     elementos se establecen en 0, por lo que deben ignorarse. La segunda matriz tiene
     una longitud de n.
         </p>
 
-    <button id="btn_problema" style="padding:10px">Solucion al problema</button>
+    <div class="buttons is-centered">
+        <button id="btn_problema" style="padding:10px" class="button is-black">Solucion al problema</button>
+    </div>
 
-    <h2 id = "preguntas_lab_4">Preguntas: Laboratorio 4</h2>
+    <h2 id = "preguntas_lab_4" class="encabezado_1">Preguntas: Laboratorio 4</h2>
 
-    <ul>
-        <li><h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+    <ul class ="content">
+        <li><h3 class="pregunta">¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3></li>
+        
+        <h4 class="respuesta">Respuesta:</h4>
         <p><strong>Diferencias:</strong></p>
         
         <p><ul>
@@ -305,8 +316,8 @@
             
         </ul></p>
 
-        <li><h3>¿Qué métodos tiene el objeto Date?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Qué métodos tiene el objeto Date?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p><ul>
             <li><strong>getDate()</strong>: Devuelve el día del mes de una fecha.</li>
             <li><strong>getMonth()</strong>: Devuelve el mes de una fecha, donde 0 representa 
@@ -316,8 +327,8 @@
             <li><strong>getMinutes()</strong>: Devuelve los minutos de una fecha.</li>
         </ul></p>
 
-        <li><h3>¿Qué métodos tienen los arreglos?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Qué métodos tienen los arreglos?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p><ul>
             <li><strong>push()</strong>: Agrega uno o más elementos al final de un arreglo.</li>
             <li><strong>pop()</strong>: Elimina el último elemento de un arreglo.</li>
@@ -326,22 +337,22 @@
             <li><strong>slice()</strong>: Devuelve una copia de una porción del arreglo.</li>
         </ul></p>
 
-        <li><h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>  
+        <li><h3 class="pregunta">¿Cómo se declara una variable con alcance local dentro de una función?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>  
         <p>Se declara una variable con alcance local dentro de una función utilizando la palabra 
             clave <strong>let</strong> o <strong>const</strong>, en lugar de <strong>var</strong>. 
             Por ejemplo: let miVariable = "Hola";
         </p>
 
-        <li><h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3></li>
-        <h4 id="respuesta">Respuesta:</h4>
+        <li><h3 class="pregunta">¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3></li>
+        <h4 class="respuesta">Respuesta:</h4>
         <p>Utilizar variables globales dentro de funciones puede causar problemas de mantenimiento 
         y legibilidad del código, ya que las funciones pueden modificar variables globales sin 
         que se note claramente en su firma.</p>
     </ul>
 
-    <h3>Links a referencias: Laboratorio 4</h3>
-    <p><ol>
+    <h3 class="pregunta">Links a referencias: Laboratorio 4</h3>
+    <p><ol class="content has-text-centered">
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
             https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></li>
         <li><a href="https://www.w3schools.com/js/">
@@ -350,8 +361,22 @@
             https://javascript.info/</a></li>
     </ol></p>
 
+    <h2 id = "descripcion_lab_5" class="encabezado_1">Descripción de Material design</h2>
+
+    <div class="content">
+        <h4 class="respuesta">Respuesta:</h4>
+    <p class="content">
+        Material Design es un lenguaje de diseño desarrollado por Google, 
+        se basa en principios de diseño visual, interacción y movimiento para 
+        crear interfaces de usuario atractivas y funcionales. Material Design utiliza 
+        elementos como tarjetas, sombras, animaciones y colores vibrantes para 
+        proporcionar una experiencia de usuario coherente y agradable en 
+        diferentes plataformas y dispositivos.</p>
+    </div>
+    
 
     <footer><a href="https://code.visualstudio.com/"> Link a Visual Studio Code </a> </footer>
-<script src="lab_4.js"></script>
+<script src="lab_5.js" ></script>
+<script>box_encabezados(); centrar_preguntas(); tag_respuesta();</script>
 
 </body>

@@ -23,7 +23,8 @@ opciones.forEach(op =>{
 //Un poquito estilo para los botones  
   boton.style.padding= "15px";
   boton.style.margin="5px";
-  boton.style.backgroundColor="green";
+  boton.style.backgroundColor="#007bff";
+  boton.style.color="white";
   
 //Evento que provoca un scroll hasta encontrar el elemento con el id destino
   boton.addEventListener("click",() => {
