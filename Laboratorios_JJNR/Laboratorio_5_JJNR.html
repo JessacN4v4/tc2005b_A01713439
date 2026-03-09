@@ -3,13 +3,16 @@
     <title> Laboratorio 1 JJNR </title>
     
     <link
-        rel="stylesheet"href="lab_2mini.css">
+        rel="stylesheet"href="lab_5mini.css">
     </link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    
-</style>
-
-    
+    <style>
+    #modal_inverso .box,
+    #modal_inverso .box p,
+    #modal_inverso strong {
+    color: #222 !important;
+    }
+    </style>
 
 </head>
 <body class="m-auto">
@@ -19,13 +22,14 @@
 
     <p class="nombre_desarrolador">Nombre:  José Juan Nava Ramírez</p>
     <p class="matricula">Matrícula: A01713439</p>
-    <p class="correo_desarrollador">Correo institucional: A17134439@tec.mx</p>
+    <p class="correo_desarrollador">Correo institucional: <a href="mailto:A01713439@tec.mx">A01713439@tec.mx</a></p>
     <p id="Solicitud_CRL">Solicitud de amistad en Clash Royale:
         <a href="https://link.clashroyale.com/invite/friend/es/?platform=iOS&tag=GCCCL0UUL&token=z83wrdwx#">
             https://link.clashroyale.com/invite
         </a>
     </p>
 
+    <!-- Lab 1 -->
 
     <h2 id = "preguntas_lab_1" class="encabezado_1">Preguntas: Laboratorio 1</h2>
 
@@ -208,7 +212,9 @@
             https://www.w3.org/TR/2011/WD-html5-diff-20110405/</a></li>
     </ol></p>
 
-    
+
+    <!-- Lab 2 -->
+
     <h2 id="preguntas_lab_2" class="encabezado_1">Preguntas: Laboratorio 2</h2>
     
     <ul class="content">
@@ -249,6 +255,8 @@
         <li><a href="https://css-tricks.com/">https://css-tricks.com/</a></li>
     </ol></p>
 
+
+    <!-- Lab 4 -->
     
     <h2 id="funciones_lab_4" class="encabezado_1">Funciones Laboratorio 4</h2>
     
@@ -276,6 +284,158 @@
 
     <div class="buttons is-centered">
         <button id="btn_problema" style="padding:10px" class="button is-black">Solucion al problema</button>
+    </div>
+
+    
+    <!-- Modales para cada funcion -->
+    
+    <div id="modal_tabla" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Tabla de cuadrados y cubos</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="form_tabla">
+                    <div class="field">
+                        <label class="label">Ingresa un número:</label>
+                        <div class="control">
+                            <input class="input" type="number" id="input_tabla" placeholder="Ejemplo: 10" min="1" required>
+                        </div>
+                        <p class="help" id="help_tabla"></p>
+                    </div>
+                </form>
+                <div id="resultado_tabla"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" form="form_tabla" class="button is-success">Generar Tabla</button>
+                <button class="button cerrar-modal">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal_suma" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Suma de 2 números</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div id="pregunta_suma" class="box has-background-info-light has-text-dark">
+                    <p class="has-text-weight-bold is-size-4 has-text-centered" id="operacion_suma"></p>
+                </div>
+                <form id="form_suma">
+                    <div class="field">
+                        <label class="label">Tu respuesta:</label>
+                        <div class="control">
+                            <input class="input" type="number" id="input_suma" placeholder="Ingresa el resultado" required>
+                        </div>
+                        <p class="help" id="help_suma"></p>
+                    </div>
+                </form>
+                <div id="resultado_suma"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" form="form_suma" class="button is-success">Enviar Respuesta</button>
+                <button class="button cerrar-modal">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal_data" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Datos del arreglo</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <p><strong>Arreglo analizado:</strong></p>
+                    <div class="box">
+                        <p id="arreglo_mostrado"></p>
+                    </div>
+                </div>
+                <div id="resultado_data"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button cerrar-modal">Cerrar</button>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal_promedios" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Promedios de cada renglón</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <p><strong>Matriz analizada:</strong></p>
+                    <div class="box">
+                        <div id="matriz_mostrada"></div>
+                    </div>
+                </div>
+                <div id="resultado_promedios"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button cerrar-modal">Cerrar</button>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal_inverso" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Número inverso</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body has-text-dark">
+                <form id="form_inverso">
+                    <div class="field">
+                        <label class="label">Ingresa un número:</label>
+                        <div class="control">
+                            <input class="input" type="text" id="input_inverso" 
+                            placeholder="Ejemplo: 12345" required>
+                        </div>
+                        <p class="help" id="help_inverso"></p>
+                    </div>
+                </form>
+                <div id="resultado_inverso"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" form="form_inverso" class="button is-success">Invertir Número</button>
+                <button class="button cerrar-modal">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal_problema" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Problema de fusión de arreglos</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <p><strong>Entrada:</strong></p>
+                    <div class="box">
+                        <p>nums1 = [2, 3, 4, 7, 9, 0, 0, 0], m = 5</p>
+                        <p>nums2 = [1, 4, 7], n = 3</p>
+                    </div>
+                </div>
+                <div id="resultado_problema"></div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button cerrar-modal">Cerrar</button>
+            </footer>
+        </div>
     </div>
 
     <h2 id = "preguntas_lab_4" class="encabezado_1">Preguntas: Laboratorio 4</h2>
@@ -361,6 +521,8 @@
             https://javascript.info/</a></li>
     </ol></p>
 
+    <!-- Lab 5 -->
+
     <h2 id = "descripcion_lab_5" class="encabezado_1">Descripción de Material design</h2>
 
     <div class="content">
@@ -373,7 +535,44 @@
         proporcionar una experiencia de usuario coherente y agradable en 
         diferentes plataformas y dispositivos.</p>
     </div>
-    
+
+
+    <!-- Lab 6-->
+
+    <h2 id = "preguntas_lab_6" class="encabezado_1">Preguntas Laboratorio 6</h2>
+    <ul class="content">
+        <li class="pregunta">¿Por qué es una buena práctica usar JavaScript para 
+        checar que sean válidos los inputs de las formas antes de enviar los 
+        datos al servidor? </li>
+
+        <h4 class="respuesta">Respuesta:</h4>
+        <p>Es una buena práctica usar JavaScript porque permite proporcionar 
+        retroalimentación inmediata al usuario, mejorar la experiencia 
+        del usuario, reducir la carga en el servidor y aumentar la seguridad 
+        al evitar que datos no válidos o maliciosos sean enviados al servidor.</p>
+
+        <li class="pregunta">¿Cómo puedes saltarte la seguridad de validaciones 
+            hechas con JavaScript?</li>
+
+        <h4 class="respuesta">Respuesta:</h4>
+        <p>Deshabilitando JavaScript en el navegador, utilizando herramientas 
+        de desarrollo para modificar el código JavaScript en tiempo real, o 
+        enviando solicitudes directamente al servidor sin pasar por la interfaz 
+        de usuario.</p>
+
+        <li class="pregunta">Si te puedes saltar la seguridad de las validaciones de 
+            JavaScript, entonces ¿por qué la primera pregunta dice que es una 
+            buena práctica?</li>
+        
+        <h4 class="respuesta">Respuesta:</h4>
+        <p>A pesar de que es posible saltarse la seguridad de las validaciones de JavaScript,
+        sigue siendo una buena práctica implementarlas porque proporcionan una capa 
+        adicional de seguridad y mejoran la experiencia del usuario al proporcionar 
+        retroalimentación inmediata sobre los errores de entrada.</p>
+
+    </ul>
+
+
 
     <footer><a href="https://code.visualstudio.com/"> Link a Visual Studio Code </a> </footer>
 <script src="lab_5.js" ></script>

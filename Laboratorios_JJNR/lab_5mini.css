@@ -1,0 +1,150 @@
+
+body {
+    background-color: #021744;
+    text-align: justify;
+}
+
+footer {
+    padding: 1em;
+    text-align: center;
+}
+
+.nombre_desarrolador {
+    color: #1069c2;
+    font-weight: 700;
+    text-align: center;
+}
+
+.matricula {
+    color: #307dca;
+    font-weight: 700;
+    text-align: center;
+}
+
+.correo_desarrollador {
+    color: #4d91da;
+    font-weight: 700;
+    text-align: center;
+}
+
+#Solicitud_CRL {
+    color: #77adda;
+    font-weight: 700;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+}
+
+.modal-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.modal-card-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+input.is-success {
+    border-color: #3bb37d;
+}
+
+input.is-danger {
+    border-color: #da3656;
+}
+
+.help.is-success {
+    color: #3bb37d;
+}
+
+.help.is-danger {
+    color: #da3656;
+}
+
+.table {
+    background-color: white;
+}
+
+.table thead {
+    background-color: #3273dc;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.notification {
+    margin-top: 1rem;
+}
+
+.box {
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button.is-info.is-dark:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-card {
+        max-width: 95%;
+    }
+    
+    .buttons {
+        flex-wrap: wrap;
+    }
+    
+    .button {
+        margin: 10px;
+    }
+}
+
+.content .box {
+    margin-bottom: 0.5rem;
+}
+
+.modal.is-active .modal-card {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #021744;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #3273dc;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #1069c2;
+}
