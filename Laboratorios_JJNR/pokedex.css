@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #1f0404;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #0a44c0;
+}
+
+.pokedex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgb(108, 155, 177);
+    width: 150px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card img {
+    width: 100%;
+}
