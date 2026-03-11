@@ -1,27 +1,48 @@
-//Pagina pokedex
-// Lista basica de Pokemon con imagenes
-const pokemons = [
-    { nombre: "Umbreon", img: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/197.png" },
-    { nombre: "Sableye", img: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/302.png" },
-    { nombre: "Dratini", img: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/147.png" },
-    { nombre: "Gengar", img: "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/094.png" }
-];
 
-function cargarPokedex() {
-    const contenedor = document.getElementById("pokedex");
+// flip de las cards
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("flip");
+    });
+});
 
-    pokemons.forEach(pokemon => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+// logica del equipo en ruta /team
+const slots = document.querySelectorAll(".slot");
+const catalogo = document.querySelectorAll(".poke-item");
 
-        card.innerHTML = `
-            <img src="${pokemon.img}" alt="${pokemon.nombre}">
-            <h3>${pokemon.nombre}</h3>
+let equipo = Array(6).fill(null);
+
+// agregar al equipo
+catalogo.forEach(item => {
+    item.addEventListener("click", () => {
+        const nombre = item.dataset.nombre;
+
+        const slotLibre = equipo.indexOf(null);
+        if (slotLibre === -1) return;
+
+        equipo[slotLibre] = nombre;
+
+        slots[slotLibre].innerHTML = `
+            <div class="text-center">
+                <img src="${item.querySelector("img").src}" class="w-16 mx-auto">
+                <p class="font-bold">${nombre}</p>
+            </div>
         `;
 
-        contenedor.appendChild(card);
+        item.style.display = "none";
     });
-}
+});
 
-// Ejecutar funcion al cargar la pagina
-cargarPokedex();
+// quitar del equipo
+slots.forEach((slot, index) => {
+    slot.addEventListener("click", () => {
+        if (!equipo[index]) return;
+
+        const nombre = equipo[index];
+        equipo[index] = null;
+
+        slot.innerHTML = "Vacío";
+
+        document.querySelector(`[data-nombre="${nombre}"]`).style.display = "block";
+    });
+});
