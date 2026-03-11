@@ -16,3 +16,71 @@
         Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/150.png
         --------------------------
         
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        -----------------------------
+    
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        -----------------------------
+    
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        Debilidades: Fuego, Hielo, Bicho, Volador,Psíquico
+        Fortalezas: Roca, Tierra, Agua, Hada, Planta, Agua,
+        -----------------------------
+    
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        Debilidades: Fuego, Hielo, Bicho, Volador,Psíquico
+        Fortalezas: Roca, Tierra, Agua, Hada, Planta, Agua,
+        -----------------------------
+    
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        Debilidades: Fuego, Hielo, Bicho, Volador, Psíquico
+        Fortalezas: Roca, Tierra, Agua, Hada, Planta, Agua
+        -----------------------------
+    
+        Nombre: Mewtwo
+        Descripción: Su ADN es casi el mismo que el de Mew. Sin embargo, su tamaño y carácter son muy diferentes
+        Tipo: Psíquico
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/150.png
+        Debilidades: Fantasma, Bicho, Siniestro
+        Fortalezas: Lucha, Veneno
+        -----------------------------
+    
+        Nombre: Venusaur
+        Descripción: Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano
+        Tipo: Planta/Veneno
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png
+        Debilidades: Fuego, Hielo, Bicho, Volador,Psíquico
+        Fortalezas: Roca, Tierra, Agua, Hada, Planta, Agua
+        -----------------------------
+    
+        Nombre: Mewtwo
+        Descripción: Su ADN es casi el mismo que el de Mew. Sin embargo, su tamaño y carácter son muy diferentes
+        Tipo: Psíquico
+        Imagen: https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/150.png
+        Debilidades: Fantasma, Bicho, Siniestro
+        Fortalezas: Lucha, Veneno
+        -----------------------------
+    
+        Nombre: 
+        Descripción: 
+        Tipo: 
+        Imagen: 
+        Debilidades: 
+        Fortalezas: 
+        -----------------------------
+    
