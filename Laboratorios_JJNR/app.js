@@ -154,32 +154,48 @@ const server = http.createServer((request,response)=>{
     }
 
     //ruta /new POST
-    if (request.url === "/new" && request.method === "POST"){
-        const datos =[];
+    if (request.url === "/new" && request.method === "POST") {
+    const datos = [];
 
-        request.on("data", chunk => datos.push(chunk));
+    request.on("data", chunk => datos.push(chunk));
 
-        request.on("end",()=>{
-            const body = Buffer.concat(datos).toString();
-            const partes = body.split("&");
+    request.on("end", () => {
+        const body = Buffer.concat(datos).toString();
+        const partes = body.split("&");
 
-            pokemons.push({
-                nombre: decodeURIComponent(partes[0].split("=")[1]),
-                descripcion: decodeURIComponent(partes[1].split("=")[1]),
-                tipo: decodeURIComponent(partes[2].split("=")[1]),
-                imagen: decodeURIComponent(partes[3].split("=")[1]),
-            });
+        function limpiar(texto) {
+            return decodeURIComponent(texto.replace(/\+/g, " "));
+        }
 
-            response.setHeader("Content-Type", "text/html");
-            response.end(
-                html_header + 
-                `<p class="text-green-600 font-bold">Pokémon agregado correctamente</p>`+ 
-                html_footer
-            );
-        });
-        
-        return;
-    }
+        const nombre = limpiar(partes[0].split("=")[1]);
+        const descripcion = limpiar(partes[1].split("=")[1]);
+        const tipo = limpiar(partes[2].split("=")[1]);
+        const imagen = limpiar(partes[3].split("=")[1]);
+
+        // Guardar en memoria
+        pokemons.push({ nombre, descripcion, tipo, imagen });
+
+        // Guardar en archivo
+        const registro = `
+        Nombre: ${nombre}
+        Descripción: ${descripcion}
+        Tipo: ${tipo}
+        Imagen: ${imagen}
+        --------------------------
+        `;
+
+        filesystem.appendFileSync("pokemons.txt", registro, "utf8");
+
+        response.setHeader("Content-Type", "text/html");
+        response.end(
+            html_header +
+            `<p class="text-green-600 font-bold">Pokémon agregado correctamente</p>` +
+            html_footer
+        );
+    });
+
+    return;
+}
 
     //ruta /team
     if(request.url === "/team"){
