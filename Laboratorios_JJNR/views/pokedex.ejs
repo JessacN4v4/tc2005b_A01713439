@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Pokédex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/pokedex.css">
+</head>
+
+<body class="bg-gray-900 text-center p-6">
+<section class="max-w-5xl mx-auto">
+
+    <h1 class="text-4xl font-bold text-indigo-600 mb-8">Mi Pokédex</h1>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        <% pokemons.forEach(p => { %>
+
+            <div class="bg-white p-4 rounded-xl shadow card cursor-pointer">
+                <div class="card-inner">
+
+                    <div class="card-front flex flex-col items-center">
+                        <img src="<%= p.imagen %>" class="w-full h-40 object-contain">
+                        <h3 class="text-xl font-bold mt-2"><%= p.nombre %></h3>
+                    </div>
+
+                    <div class="card-back bg-indigo-600 text-white p-4 rounded-xl flex flex-col justify-center">
+                        <h3 class="text-xl font-bold"><%= p.nombre %></h3>
+                        <p class="text-sm mt-2"><%= p.descripcion %></p>
+                        <p class="font-semibold mt-2">Tipo: <%= p.tipo %></p>
+                    </div>
+
+                </div>
+            </div>
+
+        <% }) %>
+
+    </div>
+
+    <a href="/" class="block mt-10 text-indigo-600 underline text-lg">Volver al menú</a>
+
+</section>
+
+<script src="/js/flips.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Equipo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/pokedex.css">
+
+</head>
+
+<body class="bg-gray-900 text-center p-6">
+<section class="max-w-5xl mx-auto">
+
+    <h1 class="text-4xl font-bold text-green-600 mb-8">Mi Equipo</h1>
+
+    <div id="slots" class="grid grid-cols-3 gap-4 mb-8">
+
+        <% equipo.forEach((poke, i) => { %>
+
+            <% if (poke) { %>
+                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex flex-col items-center justify-center">
+                    <img src="<%= poke.imagen %>" class="w-16">
+                    <p class="font-bold"><%= poke.nombre %></p>
+                </div>
+            <% } else { %>
+                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex items-center justify-center text-gray-400">
+                    Vacío
+                </div>
+            <% } %>
+
+        <% }) %>
+
+    </div>
+
+    <a id="btn-detalle"
+        href="<%= equipoLleno ? '/equipo/detalle' : '#' %>"
+        class="
+            px-4 py-2 rounded shadow transition
+            <%= equipoLleno
+                ? 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer'
+                : 'bg-gray-400 text-gray-700 cursor-not-allowed'
+            %>
+        ">
+        Detalle de equipo
+    </a>
+
+    <h3 class="text-2xl text-white font-semibold mt-10 mb-4">Capturados</h3>
+
+    <div id="catalogo" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        <% pokemons.forEach(p => { %>
+
+            <% if (!equipo.map(e => e?.nombre).includes(p.nombre)) { %>
+                <div class="poke-item bg-indigo-100 p-4 rounded-xl shadow cursor-pointer" data-nombre="<%= p.nombre %>">
+                    <img src="<%= p.imagen %>" class="w-full h-32 object-contain">
+                    <h3 class="text-lg font-bold mt-2"><%= p.nombre %></h3>
+                </div>
+            <% } %>
+
+        <% }) %>
+
+    </div>
+
+    <a href="/" class="block mt-10 text-indigo-600 underline text-lg">Volver al menú</a>
+
+</section>
+
+<script src="/js/equipo.js"></script>
+</body>
+</html>
