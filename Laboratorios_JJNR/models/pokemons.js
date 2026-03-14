@@ -57,4 +57,26 @@ const pokemons = [
     }
 ];
 
-module.exports = pokemons;
+module.exports = class Pokemon {
+
+    constructor(nombre, descripcion, tipo, imagen, debilidades, fortalezas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.imagen = imagen;
+        this.debilidades = debilidades;
+        this.fortalezas = fortalezas;
+    }
+
+    save() {
+        pokemons.push(this);
+    }
+
+    static fetchAll() {
+        return pokemons;
+    }
+
+    static findByName(nombre) {
+        return pokemons.find(p => p.nombre === nombre);
+    }
+};

@@ -1,41 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const pokemons = require('./pokemons.data');
 
-let equipo = Array(6).fill(null);
+const equipoController = require('../controllers/equipo.controller');
 
-// seleccion de dequipo
-router.get('/', (request, response, next) => {
+//Seleccion de equipo
+router.get('/', equipoController.getEquipo);
 
-    const equipoConDatos = equipo.map(nombre =>
-        nombre ? pokemons.find(p => p.nombre === nombre) : null
-    );
+//Detalle del equipo
+router.get('/detalle', equipoController.getDetalle);
 
-    const equipoLleno = equipo.every(x => x !== null);
-
-    response.render('equipo', {
-        equipo: equipoConDatos,
-        pokemons,
-        equipoLleno
-    });
-});
-
-// detalle de equipo
-router.get('/detalle', (request, response,next) => {
-
-    const equipoConDatos = equipo
-        .filter(nombre => nombre)
-        .map(nombre => pokemons.find(p => p.nombre === nombre));
-
-    response.render('detalle_equipo', { equipo: equipoConDatos });
-
-    equipo = Array(6).fill(null);
-});
-
-// mandar equipo desde frontend
-router.post('/actualizar', (request, response, next) => {
-    equipo = request.body.equipo;
-    express.response.json({ ok: true });
-});
+//Recibir equipo desde frontend
+router.post('/actualizar', equipoController.postActualizar);
 
 module.exports = router;

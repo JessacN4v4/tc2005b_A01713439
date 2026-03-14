@@ -1,26 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const pokemons = require('./pokemons.data');
 
-router.get('/', (request, response, next) => {
-    response.render('pokedex', { pokemons });
-});
+const pokedexController = require('../controllers/pokedex.controller');
 
-router.get('/new', (request, response, next) => {
-    response.render('formulario');
-});
+//Mostrar pokedex
+router.get('/', pokedexController.getPokedex);
 
-router.post('/new', (request, response, next) => {
-    const { nombre, descripcion, tipo, imagen, debilidades, fortalezas } = request.body;
+//Mostrar formulario
+router.get('/new', pokedexController.getNuevoPokemon);
 
-    if (!nombre || !descripcion || !tipo || !imagen || !debilidades || !fortalezas) {
-        return response.status(400).send("Todos los campos son obligatorios");
-    }
-
-    pokemons.push({ nombre, descripcion, tipo, imagen, debilidades, fortalezas });
-
-    response.redirect('/pokedex');
-});
-
+//Procesar formulario
+router.post('/new', pokedexController.postNuevoPokemon);
 
 module.exports = router;
