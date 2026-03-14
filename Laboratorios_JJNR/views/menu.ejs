@@ -6,10 +6,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-900 text-center p-10">
+<body 
+    class="text-center p-10 min-h-screen bg-cover bg-center <%= !fondo.startsWith('url') ? fondo : '' %>"
+    style="<%= fondo.startsWith('url') ? `background-image: ${fondo};` : '' %>"
+>
+
 <section class="max-w-xl mx-auto">
 
-    <h1 class="text-4xl font-bold text-indigo-600 mb-10">Menú Principal</h1>
+    <div class="bg-black/40 backdrop-blur-md text-white p-6 rounded-xl shadow max-w-md mx-auto mb-8">
+    <h1 class="text-4xl mb-2">Menú Principal</h1>
+    <p class="text-lg">Bienvenido, <span class="font-bold"><%= usuario %></span></p>
+    </div>
 
     <div class="flex flex-col gap-6">
 
@@ -27,6 +34,27 @@
 
     </div>
 
+    <form action="/menu/fondo" method="POST" 
+    class="absolute top-4 right-4 bg-white/80 backdrop-blur px-3 py-2 rounded-lg shadow flex gap-2 items-center"
+>
+    <select name="fondo" class="p-1 text-sm rounded border">
+        <option value="bg1">Oscuro</option>
+        <option value="bg2">Claro</option>
+        <option value="img1">151</option>
+        <option value="img2">Poke-balls</option>
+    </select>
+
+    <button 
+        type="submit" 
+        class="bg-indigo-600 text-white text-sm px-2 py-1 rounded hover:bg-indigo-700 transition">OK</button>
+    </form>
+
+    <a href="/logout" 
+    class="block mt-10 text-red-700 underline text-lg bg-black/40 backdrop-blur-md p-3 rounded-xl max-w-xs mx-auto"
+    >Cerrar sesión</a>
+
+
 </section>
+
 </body>
 </html>

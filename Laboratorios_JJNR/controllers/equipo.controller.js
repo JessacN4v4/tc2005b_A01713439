@@ -6,7 +6,6 @@ exports.getEquipo = (request, response, next) => {
 
     const equipo = Equipo.getEquipo();
 
-    //Convertir nombres → objetos completos
     const equipoConDatos = equipo.map(nombre =>
         nombre ? Pokemon.findByName(nombre) : null
     );
@@ -27,7 +26,7 @@ exports.getDetalle = (request, response, next) => {
 
     response.render('detalle_equipo', { equipo });
 
-    //Limpiar equipo despues de mostrar detalle
+    //limpiar equipo despues de mostrar detalle
     Equipo.limpiar();
 };
 
