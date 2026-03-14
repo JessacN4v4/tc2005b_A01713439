@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const items = Array.from(document.querySelectorAll(".poke-item"));
     const btnDetalle = document.getElementById("btn-detalle");
 
-    // Estado inicial del equipo basado en el DOM
+    //Estado inicial del equipo basado en el DOM
     let equipo = slots.map(slot => {
         const nombre = slot.querySelector("p")?.textContent;
         return nombre && nombre !== "Vacío" ? nombre : null;

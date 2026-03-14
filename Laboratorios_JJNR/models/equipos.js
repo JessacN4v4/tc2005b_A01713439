@@ -9,17 +9,17 @@ module.exports = class Equipo {
         return equipo;
     }
 
-    // Reemplazar el equipo completo (desde el frontend)
+    //Reemplazar el equipo completo (desde el frontend)
     static setEquipo(nuevoEquipo) {
         equipo = nuevoEquipo;
     }
 
-    // Saber si el equipo está lleno
+    //Saber si el equipo está lleno
     static estaLleno() {
         return equipo.every(x => x !== null);
     }
 
-    // Limpiar el equipo después de ver el detalle
+    //Limpiar el equipo después de ver el detalle
     static limpiar() {
         equipo = Array(6).fill(null);
     }
