@@ -2,36 +2,73 @@ const Pokemon = require('../models/pokemons');
 const Equipo = require('../models/equipos');
 
 //GET /equipo
-exports.getEquipo = (request, response, next) => {
+exports.getEquipo = async (request, response, next) => {
+    try {
+        const usuarioId = request.session.usuario_id; 
 
-    const equipo = Equipo.getEquipo();
+        const [rows] = await Equipo.getEquipo(usuarioId);
 
-    const equipoConDatos = equipo.map(nombre =>
-        nombre ? Pokemon.findByName(nombre) : null
-    );
+        const equipo = Array(6).fill(null);
+        rows.forEach(r => equipo[r.slot] = r.pokemon_id);
 
-    response.render('equipo', {
-        equipo: equipoConDatos,
-        pokemons: Pokemon.fetchAll(),
-        equipoLleno: Equipo.estaLleno()
-    });
+        const equipoConDatos = await Promise.all(
+            equipo.map(async id => {
+                if (!id) return null;
+                const [p] = await Pokemon.findById(id);
+                return p[0];
+            })
+        );
+
+        const [pokemons] = await Pokemon.fetchAll();
+
+        response.render('equipo', {
+            equipo: equipoConDatos,
+            pokemons,
+            equipoLleno: rows.length === 6
+        });
+
+    } catch (error) {
+        console.error("Error en getEquipo:", error);
+        response.status(500).send("Error interno del servidor");
+    }
 };
 
-//GET /equipo/detalle
-exports.getDetalle = (request, response, next) => {
+// GET /equipo/detalle
+exports.getDetalle = async (request, response, next) => {
+    try {
+        const usuarioId = request.session.usuario_id;
 
-    const equipo = Equipo.getEquipo()
-        .filter(nombre => nombre)
-        .map(nombre => Pokemon.findByName(nombre));
+        const [rows] = await Equipo.getEquipo(usuarioId);
 
-    response.render('detalle_equipo', { equipo });
+        const equipoConDatos = await Promise.all(
+            rows.map(async r => {
+                const [p] = await Pokemon.findById(r.pokemon_id);
+                return p[0];
+            })
+        );
 
-    //limpiar equipo despues de mostrar detalle
-    Equipo.limpiar();
+        response.render('detalle_equipo', { equipo: equipoConDatos });
+
+        await Equipo.limpiar(usuarioId);
+
+    } catch (error) {
+        console.error("Error en getDetalle:", error);
+        response.status(500).send("Error interno del servidor");
+    }
 };
 
-//POST /equipo/actualizar
-exports.postActualizar = (request, response, next) => {
-    Equipo.setEquipo(request.body.equipo);
-    response.json({ ok: true });
+// POST /equipo/actualizar
+exports.postActualizar = async (request, response, next) => {
+    try {
+        const usuarioId = request.session.usuario_id;
+        const nuevoEquipo = request.body.equipo; 
+
+        await Equipo.setEquipo(usuarioId, nuevoEquipo);
+
+        response.json({ ok: true });
+
+    } catch (error) {
+        console.error("Error en postActualizar:", error);
+        response.status(500).json({ ok: false });
+    }
 };

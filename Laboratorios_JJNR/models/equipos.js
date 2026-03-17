@@ -1,26 +1,44 @@
-// models/Equipo.js
-
-let equipo = Array(6).fill(null);
+const db = require('../utils/database');
 
 module.exports = class Equipo {
 
-    // Obtener el equipo actual (arreglo de 6 posiciones)
-    static getEquipo() {
-        return equipo;
+    //Obtener equipo del usuario
+    static getEquipo(usuarioId) {
+        return db.execute(
+            'SELECT slot, pokemon_id FROM equipo WHERE usuario_id = ? ORDER BY slot ASC',
+            [usuarioId]
+        );
     }
 
-    //Reemplazar el equipo completo (desde el frontend)
-    static setEquipo(nuevoEquipo) {
-        equipo = nuevoEquipo;
+    //Guardar equipo completo
+    static async setEquipo(usuarioId, nuevoEquipo) {
+        
+        //borrar equipo anterior
+        await db.execute('DELETE FROM equipo WHERE usuario_id = ?', [usuarioId]);
+
+        //insertar nuevo equipo
+        const inserts = nuevoEquipo.map((pokemonId, index) => {
+            if (!pokemonId) return null;
+            return db.execute(
+                'INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (?, ?, ?)',
+                [usuarioId, pokemonId, index]
+            );
+        });
+
+        return Promise.all(inserts);
     }
 
-    //Saber si el equipo está lleno
-    static estaLleno() {
-        return equipo.every(x => x !== null);
+    //Saber si el equipo esta lleno
+    static async estaLleno(usuarioId) {
+        const [rows] = await db.execute(
+            'SELECT COUNT(*) AS total FROM equipo WHERE usuario_id = ?',
+            [usuarioId]
+        );
+        return rows[0].total === 6;
     }
 
-    //Limpiar el equipo después de ver el detalle
-    static limpiar() {
-        equipo = Array(6).fill(null);
+    //Limpiar equipo
+    static limpiar(usuarioId) {
+        return db.execute('DELETE FROM equipo WHERE usuario_id = ?', [usuarioId]);
     }
 };
