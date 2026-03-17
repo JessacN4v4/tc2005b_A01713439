@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const csrfToken = document.getElementById("csrfToken").value;
+
     const slots = Array.from(document.querySelectorAll(".slot"));
     const items = Array.from(document.querySelectorAll(".poke-item"));
     const btnDetalle = document.getElementById("btn-detalle");
 
-    //Estado inicial del equipo basado en el DOM
     let equipo = slots.map(slot => {
-        const nombre = slot.querySelector("p")?.textContent;
-        return nombre && nombre !== "Vacío" ? nombre : null;
+        const id = slot.dataset.id;
+        return id && id !== "" ? id : null;
     });
 
     const equipoEstaLleno = () => equipo.every(x => x !== null);
@@ -38,20 +39,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fetch("/equipo/actualizar", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "CSRF-Token": csrfToken   
+            },
             body: JSON.stringify({ equipo })
         });
     };
 
     const agregarPokemon = (item) => {
-        const nombre = item.dataset.nombre;
+        const id = item.dataset.id; 
         const slotLibre = equipo.indexOf(null);
         if (slotLibre === -1) return;
 
-        equipo[slotLibre] = nombre;
+        equipo[slotLibre] = id;
 
         const imgSrc = item.querySelector("img").src;
+        const nombre = item.querySelector("h3").textContent;
 
+        slots[slotLibre].dataset.id = id;
         slots[slotLibre].innerHTML = `
             <div class="text-center">
                 <img src="${imgSrc}" class="w-16 mx-auto">
@@ -66,12 +72,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const quitarPokemon = (index) => {
         if (!equipo[index]) return;
 
-        const nombre = equipo[index];
+        const id = equipo[index];
         equipo[index] = null;
 
+        slots[index].dataset.id = "";
         slots[index].innerHTML = "Vacío";
 
-        const item = document.querySelector(`[data-nombre="${nombre}"]`);
+        const item = document.querySelector(`[data-id="${id}"]`);
         if (item) item.style.display = "block";
 
         actualizarBotonDetalle();

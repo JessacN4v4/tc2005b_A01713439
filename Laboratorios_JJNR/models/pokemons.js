@@ -22,11 +22,11 @@ module.exports = class Pokemon {
         return db.execute('SELECT * FROM pokemon');
     }
 
+    static findById(idPokemon) {
+    return db.execute('SELECT * FROM pokemon WHERE id_pokemon = ?', [idPokemon]);
+    }
+
     static findByName(nombre) {
     return db.execute('SELECT * FROM pokemon WHERE nombre = ?', [nombre]);
     } 
-    
-    static findById(id) {
-    return db.execute('SELECT * FROM pokemon WHERE id = ?', [id]);
-    }
 };

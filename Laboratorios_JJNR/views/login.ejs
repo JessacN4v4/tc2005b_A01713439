@@ -11,7 +11,15 @@
 
     <h1 class="text-3xl font-bold text-indigo-500 mb-6">Iniciar Sesión</h1>
 
+    <% if (error) { %>
+    <div class="bg-red-500 text-white p-3 rounded mb-4">
+        <%= error %>
+    </div>
+    <% } %>
+
     <form action="/login" method="POST" class="bg-gray-100 p-6 rounded-xl shadow space-y-4">
+
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
         <div>
             <label class="block font-semibold mb-1">Usuario</label>

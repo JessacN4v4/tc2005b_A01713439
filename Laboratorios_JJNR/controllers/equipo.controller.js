@@ -4,9 +4,13 @@ const Equipo = require('../models/equipos');
 //GET /equipo
 exports.getEquipo = async (request, response, next) => {
     try {
-        const usuarioId = request.session.usuario_id; 
+        const idUser = request.session.id_user;
 
-        const [rows] = await Equipo.getEquipo(usuarioId);
+        if (!idUser) {
+            return response.redirect('/login');
+        }
+
+        const [rows] = await Equipo.getEquipo(idUser);
 
         const equipo = Array(6).fill(null);
         rows.forEach(r => equipo[r.slot] = r.pokemon_id);
@@ -33,12 +37,12 @@ exports.getEquipo = async (request, response, next) => {
     }
 };
 
-// GET /equipo/detalle
+//GET /equipo/detalle
 exports.getDetalle = async (request, response, next) => {
     try {
-        const usuarioId = request.session.usuario_id;
+        const idUser = request.session.id_user;
 
-        const [rows] = await Equipo.getEquipo(usuarioId);
+        const [rows] = await Equipo.getEquipo(idUser);
 
         const equipoConDatos = await Promise.all(
             rows.map(async r => {
@@ -49,7 +53,7 @@ exports.getDetalle = async (request, response, next) => {
 
         response.render('detalle_equipo', { equipo: equipoConDatos });
 
-        await Equipo.limpiar(usuarioId);
+        await Equipo.limpiar(idUser);
 
     } catch (error) {
         console.error("Error en getDetalle:", error);
@@ -57,13 +61,14 @@ exports.getDetalle = async (request, response, next) => {
     }
 };
 
-// POST /equipo/actualizar
+//POST /equipo/actualizar
 exports.postActualizar = async (request, response, next) => {
     try {
-        const usuarioId = request.session.usuario_id;
-        const nuevoEquipo = request.body.equipo; 
+        console.log("Equipo recibido:", request.body.equipo);
+        const idUser = request.session.id_user;
+        const nuevoEquipo = request.body.equipo;
 
-        await Equipo.setEquipo(usuarioId, nuevoEquipo);
+        await Equipo.setEquipo(idUser, nuevoEquipo);
 
         response.json({ ok: true });
 

@@ -5,11 +5,12 @@
     <title>Mi Equipo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/pokedex.css">
-
 </head>
 
 <body class="bg-gray-900 text-center p-6">
 <section class="max-w-5xl mx-auto">
+
+    <input type="hidden" id="csrfToken" value="<%= csrfToken %>">
 
     <h1 class="text-4xl font-bold text-green-600 mb-8">Mi Equipo</h1>
 
@@ -18,12 +19,15 @@
         <% equipo.forEach((poke, i) => { %>
 
             <% if (poke) { %>
-                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex flex-col items-center justify-center">
+                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex flex-col items-center justify-center"
+                    data-id="<%= poke.id_pokemon %>">
                     <img src="<%= poke.imagen %>" class="w-16">
                     <p class="font-bold"><%= poke.nombre %></p>
                 </div>
+
             <% } else { %>
-                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex items-center justify-center text-gray-400">
+                <div class="slot bg-indigo-100 h-32 rounded-xl shadow flex items-center justify-center text-gray-400"
+                    data-id="">
                     Vacío
                 </div>
             <% } %>
@@ -51,7 +55,8 @@
         <% pokemons.forEach(p => { %>
 
             <% if (!equipo.map(e => e?.nombre).includes(p.nombre)) { %>
-                <div class="poke-item bg-indigo-100 p-4 rounded-xl shadow cursor-pointer" data-nombre="<%= p.id %>">
+                <div class="poke-item bg-indigo-100 p-4 rounded-xl shadow cursor-pointer"
+                    data-id="<%= p.id_pokemon %>">
                     <img src="<%= p.imagen %>" class="w-full h-32 object-contain">
                     <h3 class="text-lg font-bold mt-2"><%= p.nombre %></h3>
                 </div>
