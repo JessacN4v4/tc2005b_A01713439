@@ -50,3 +50,59 @@ exports.logout = (request, response, next) => {
         response.redirect('/login');
     });
 };
+
+//GET /cambiar-password
+exports.getCambiarPassword = (request, response, next) => {
+    response.render('cambiar_password', { error: null, success: null });
+};
+
+//POST /cambiar-password
+exports.postCambiarPassword = (request, response, next) => {
+    const { passwordActual, passwordNueva, passwordConfirm } = request.body;
+    const userId = request.session.id_user;
+
+    if (passwordNueva !== passwordConfirm) {
+        return response.render('cambiar_password', {
+            error: 'La nueva contraseña y su confirmación no coinciden.',
+            success: null
+        });
+    }
+
+    db.execute('SELECT password FROM usuraios WHERE id_user = ?', [userId])
+        .then(([rows]) => {
+            if (rows.length === 0) {
+                return response.render('cambiar_password', {
+                    error: 'Usuario no encontrado.',
+                    success: null
+                });
+            }
+
+            return bcrypt.compare(passwordActual, rows[0].password)
+                .then(doMatch => {
+                    if (!doMatch) {
+                        return response.render('cambiar_password', {
+                            error: 'La contraseña actual es incorrecta.',
+                            success: null
+                        });
+                    }
+
+                    return bcrypt.hash(passwordNueva, 10)
+                        .then(hash => {
+                            return db.execute(
+                                'UPDATE usuraios SET password = ? WHERE id_user = ?',
+                                [hash, userId]
+                            );
+                        })
+                        .then(() => {
+                            response.render('cambiar_password', {
+                                error: null,
+                                success: '¡Contraseña actualizada correctamente!'
+                            });
+                        });
+                });
+        })
+        .catch(err => {
+            console.error(err);
+            response.status(500).send('Error interno del servidor');
+        });
+};
