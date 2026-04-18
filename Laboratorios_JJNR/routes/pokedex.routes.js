@@ -9,5 +9,6 @@ const upload = require('../utils/upload');
 router.get('/pokedex', isAuth, menuController.protegerRuta, pokedexController.getPokedex);
 router.get('/pokedex/new', isAuth, menuController.protegerRuta, pokedexController.getNuevoPokemon);
 router.post('/pokedex/new', isAuth, menuController.protegerRuta, upload.single('imagen'), pokedexController.postNuevoPokemon);
+router.get('/pokedex/detail/:name', isAuth, pokedexController.getApiDetail);
 
 module.exports = router;

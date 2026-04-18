@@ -2,45 +2,102 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Mi Pokédex</title>
+    <title>Pokédex</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/pokedex.css">
 </head>
 
+<%
+function getGen(id) {
+    if (id <= 151) return 1;
+    if (id <= 251) return 2;
+    if (id <= 386) return 3;
+    if (id <= 493) return 4;
+    if (id <= 649) return 5;
+    if (id <= 721) return 6;
+    if (id <= 809) return 7;
+    if (id <= 905) return 8;
+    return 9;
+}
+const genLabels = ['Gen I','Gen II','Gen III','Gen IV','Gen V','Gen VI','Gen VII','Gen VIII','Gen IX'];
+%>
+
 <body class="bg-gray-900 text-center p-6">
-<section class="max-w-5xl mx-auto">
+<section class="max-w-6xl mx-auto">
 
-    <h1 class="text-4xl font-bold text-indigo-600 mb-8">Mi Pokédex</h1>
+    <h1 class="text-4xl font-bold text-indigo-500 mb-1">Pokédex</h1>
+    <p class="text-gray-400 mb-4 text-sm">
+        <%= Object.keys(capturedMap).length %> / <%= allPokemon.length %> capturados
+    </p>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="flex justify-center mb-4">
+        <button class="tab-btn bg-gray-700 text-gray-300 px-6 py-2 rounded-lg text-base font-semibold transition"
+                data-gen="mis">
+            Mis Pokémon
+        </button>
+    </div>
 
-        <% pokemons.forEach(p => { %>
+    <div class="mb-4 flex justify-end">
+        <a href="/pokedex/new"
+           class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition text-sm">
+            + Agregar Pokémon
+        </a>
+    </div>
 
-            <div class="bg-white p-4 rounded-xl shadow card cursor-pointer">
-                <div class="card-inner">
+    <%/* Tabs de generación */%>
+    <div class="flex flex-wrap gap-2 justify-center mb-6">
+        <% for (let i = 1; i <= 9; i++) { %>
+            <button class="tab-btn bg-gray-700 text-gray-300 px-3 py-1 rounded text-sm font-medium transition"
+                    data-gen="<%= i %>">
+                <%= genLabels[i-1] %>
+            </button>
+        <% } %>
+    </div>
 
-                    <div class="card-front flex flex-col items-center">
-                        <img src="<%= p.imagen %>" class="w-full h-40 object-contain">
-                        <h3 class="text-xl font-bold mt-2"><%= p.nombre %></h3>
+    <%/* Grid */%>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+
+        <% allPokemon.forEach(p => { %>
+            <% const captured = capturedMap[p.name]; %>
+            <% const gen = getGen(p.id); %>
+
+            <div class="poke-card-wrapper"
+                 data-gen="<%= gen %>"
+                 data-captured="<%= captured ? 'true' : 'false' %>">
+
+                <% if (captured) { %>
+                    <div class="card" data-name="<%= p.name %>">
+                        <div class="card-inner">
+
+                            <div class="card-front bg-white p-3 rounded-xl shadow flex flex-col items-center">
+                                <span class="text-gray-400 text-xs self-start">#<%= String(p.id).padStart(3, '0') %></span>
+                                <img src="<%= captured.imagen %>"
+                                     class="w-full h-32 object-contain my-1"
+                                     alt="<%= p.name %>">
+                                <h3 class="text-sm font-bold capitalize mt-1"><%= p.name %></h3>
+                            </div>
+
+                            <div class="card-back bg-indigo-800 rounded-xl shadow"></div>
+
+                        </div>
                     </div>
 
-                    <div class="card-back bg-indigo-600 text-white p-4 rounded-xl flex flex-col justify-center">
-                        <h3 class="text-xl font-bold"><%= p.nombre %></h3>
-                        <p class="text-sm mt-2"><%= p.descripcion %></p>
-                        <p class="font-semibold mt-2">Tipo: <%= p.tipo %></p>
+                <% } else { %>
+                    <div class="card-locked">
+                        <p class="text-white font-bold text-lg">#<%= String(p.id).padStart(3, '0') %></p>
                     </div>
+                <% } %>
 
-                </div>
             </div>
 
         <% }) %>
 
     </div>
 
-    <a href="/menu" class="block mt-10 text-indigo-600 underline text-lg">Volver al menú</a>
+    <a href="/menu" class="block mt-10 text-indigo-400 underline text-sm">Volver al menú</a>
 
 </section>
 
-<script src="/js/flips.js"></script>
+<script src="/js/pokedex.js"></script>
 </body>
 </html>
