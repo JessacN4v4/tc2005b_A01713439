@@ -1,6 +1,6 @@
 /**
  * setup_db.js
- * Crea la base de datos labs_pokemon y carga el esquema + datos semilla.
+ * Crea la base de datos labs_pokemon 
  *
  * Uso:
  *   node scripts/setup_db.js
@@ -26,10 +26,13 @@ async function main() {
     const connection = await mysql.createConnection(CONFIG);
     console.log('Conectado a MySQL.');
 
+    await connection.query('CREATE DATABASE IF NOT EXISTS `labs_pokemon` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;');
+    await connection.query('USE `labs_pokemon`;');
+    console.log('Base de datos "labs_pokemon" seleccionada.');
+
     const sql = fs.readFileSync(SQL_FILE, 'utf8');
     await connection.query(sql);
     console.log('Base de datos "labs_pokemon" configurada correctamente.');
-    console.log('Usuario de prueba → usuario: admin | password: a');
 
     await connection.end();
 }

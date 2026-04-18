@@ -2,19 +2,15 @@ const db = require('../utils/database');
 
 module.exports = class Pokemon {
 
-    constructor(nombre, descripcion, tipo, imagen, debilidades, fortalezas) {
+    constructor(nombre, imagen) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
         this.imagen = imagen;
-        this.debilidades = debilidades;
-        this.fortalezas = fortalezas;
     }
 
     save() {
         return db.execute(
-            'INSERT INTO pokemon (nombre, descripcion, tipo, imagen, debilidades, fortalezas) VALUES (?, ?, ?, ?, ?, ?)',
-            [this.nombre, this.descripcion, this.tipo, this.imagen, this.debilidades, this.fortalezas]
+            'INSERT INTO pokemon (nombre, imagen) VALUES (?, ?)',
+            [this.nombre, this.imagen]
         );
     }
 
@@ -23,10 +19,10 @@ module.exports = class Pokemon {
     }
 
     static findById(idPokemon) {
-    return db.execute('SELECT * FROM pokemon WHERE id_pokemon = ?', [idPokemon]);
+        return db.execute('SELECT * FROM pokemon WHERE id_pokemon = ?', [idPokemon]);
     }
 
     static findByName(nombre) {
-    return db.execute('SELECT * FROM pokemon WHERE nombre = ?', [nombre]);
-    } 
+        return db.execute('SELECT * FROM pokemon WHERE nombre = ?', [nombre]);
+    }
 };
