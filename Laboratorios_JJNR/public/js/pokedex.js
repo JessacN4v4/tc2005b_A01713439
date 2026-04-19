@@ -35,6 +35,35 @@ async function loadDetail(card, name) {
     }
 }
 
+// ── Eliminar Pokémon (AJAX) ───────────────────────────────────────────────────
+
+async function eliminarPokemon(btn) {
+    const id = parseInt(btn.dataset.id);
+    const csrf = document.getElementById('csrfToken').value;
+
+    fetch('/pokedex/eliminar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'csrf-token': csrf
+        },
+        body: JSON.stringify({ id_pokemon: id })
+    }).then(result => {
+        return result.json();
+    }).then(data => {
+        if (data.ok) {
+            const wrapper = btn.closest('.poke-card-wrapper');
+            wrapper.remove();
+            const contador = document.getElementById('contador-capturados');
+            contador.textContent = parseInt(contador.textContent) - 1;
+        } else {
+            alert('No se pudo eliminar: ' + (data.message || 'error'));
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
 // ── Tabs ──────────────────────────────────────────────────────────────────────
 
 function activateTab(tabEl) {
@@ -47,15 +76,21 @@ function activateTab(tabEl) {
 }
 
 function filterCards(gen) {
+    const esMis = gen === 'mis';
     document.querySelectorAll('.poke-card-wrapper').forEach(wrapper => {
         const cardGen = parseInt(wrapper.dataset.gen);
         const captured = wrapper.dataset.captured === 'true';
 
-        if (gen === 'mis') {
+        if (esMis) {
             wrapper.style.display = captured ? '' : 'none';
         } else {
             wrapper.style.display = cardGen === parseInt(gen) ? '' : 'none';
         }
+    });
+
+    // Mostrar botón Eliminar solo en "Mis Pokémon"
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.classList.toggle('hidden', !esMis);
     });
 }
 
@@ -69,6 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 loaded = true;
                 loadDetail(card, card.dataset.name);
             }
+        });
+    });
+
+    // Botones Eliminar
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // evita que active el flip de la card
+            eliminarPokemon(btn);
         });
     });
 

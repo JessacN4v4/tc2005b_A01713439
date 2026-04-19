@@ -25,9 +25,12 @@ const genLabels = ['Gen I','Gen II','Gen III','Gen IV','Gen V','Gen VI','Gen VII
 <body class="bg-gray-900 text-center p-6">
 <section class="max-w-6xl mx-auto">
 
+    <input type="hidden" id="csrfToken" value="<%= csrfToken %>">
+
     <h1 class="text-4xl font-bold text-indigo-500 mb-1">Pokédex</h1>
     <p class="text-gray-400 mb-4 text-sm">
-        <%= Object.keys(capturedMap).length %> / <%= allPokemon.length %> capturados
+        <span id="contador-capturados"><%= Object.keys(capturedMap).length %></span>
+        / <%= allPokemon.length %> capturados
     </p>
 
     <div class="flex justify-center mb-4">
@@ -75,6 +78,10 @@ const genLabels = ['Gen I','Gen II','Gen III','Gen IV','Gen V','Gen VI','Gen VII
                                      class="w-full h-32 object-contain my-1"
                                      alt="<%= p.name %>">
                                 <h3 class="text-sm font-bold capitalize mt-1"><%= p.name %></h3>
+                                <button class="btn-eliminar absolute bottom-2 right-2 bg-red-500 hover:bg-red-600 text-white text-xs px-2 py-1 rounded transition hidden"
+                                        data-id="<%= captured.id_pokemon %>">
+                                    Eliminar
+                                </button>
                             </div>
 
                             <div class="card-back bg-indigo-800 rounded-xl shadow"></div>

@@ -44,6 +44,20 @@ exports.postNuevoPokemon = (request, response, next) => {
 };
 
 // GET /pokedex/detail/:name  — JSON para el frontend
+// POST /pokedex/eliminar  — elimina un pokemon capturado (AJAX)
+exports.postEliminarPokemon = async (request, response, next) => {
+    try {
+        const id = parseInt(request.body.id_pokemon);
+        if (!id) return response.status(400).json({ ok: false, message: 'ID inválido' });
+
+        await Pokemon.deleteById(id);
+        response.status(200).json({ ok: true });
+    } catch (err) {
+        console.error('Error al eliminar Pokémon:', err);
+        response.status(500).json({ ok: false, message: 'Error interno del servidor' });
+    }
+};
+
 exports.getApiDetail = async (request, response, next) => {
     try {
         const data = await getPokemonBasic(request.params.name);

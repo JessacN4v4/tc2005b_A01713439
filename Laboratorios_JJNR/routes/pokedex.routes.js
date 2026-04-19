@@ -10,5 +10,6 @@ router.get('/pokedex', isAuth, menuController.protegerRuta, pokedexController.ge
 router.get('/pokedex/new', isAuth, menuController.protegerRuta, pokedexController.getNuevoPokemon);
 router.post('/pokedex/new', isAuth, menuController.protegerRuta, upload.single('imagen'), pokedexController.postNuevoPokemon);
 router.get('/pokedex/detail/:name', isAuth, pokedexController.getApiDetail);
+router.post('/pokedex/eliminar', isAuth, pokedexController.postEliminarPokemon);
 
 module.exports = router;

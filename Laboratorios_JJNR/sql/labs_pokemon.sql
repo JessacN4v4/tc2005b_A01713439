@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2026 a las 15:31:25
+-- Tiempo de generación: 19-04-2026 a las 22:24:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,41 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `labs_pokemon`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_guardar_equipo` (IN `p_usuario_id` INT, IN `p0` INT, IN `p1` INT, IN `p2` INT, IN `p3` INT, IN `p4` INT, IN `p5` INT)   BEGIN
+      DECLARE EXIT HANDLER FOR SQLEXCEPTION
+      BEGIN
+          ROLLBACK;
+          RESIGNAL;
+      END;
+
+      START TRANSACTION;
+
+      DELETE FROM equipo WHERE usuario_id = p_usuario_id;
+
+      IF p0 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p0, 0); END IF;
+      IF p1 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p1, 1); END IF;
+      IF p2 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p2, 2); END IF;
+      IF p3 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p3, 3); END IF;
+      IF p4 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p4, 4); END IF;
+      IF p5 IS NOT NULL THEN INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (p_usuario_id, p5, 5); END IF;
+
+      COMMIT;
+  END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_equipo` (IN `p_usuario_id` INT)   BEGIN                                                                                                                                        
+      SELECT e.slot, p.id_pokemon, p.nombre, p.imagen
+      FROM equipo e                                                                                                                            
+      INNER JOIN pokemon p ON p.id_pokemon = e.pokemon_id   
+      WHERE e.usuario_id = p_usuario_id
+      ORDER BY e.slot ASC;
+  END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -43,26 +78,21 @@ CREATE TABLE `equipo` (
 CREATE TABLE `pokemon` (
   `id_pokemon` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL,
-  `tipo` varchar(40) NOT NULL,
-  `imagen` varchar(300) NOT NULL,
-  `debilidades` varchar(200) NOT NULL,
-  `fortalezas` varchar(200) NOT NULL
+  `imagen` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pokemon`
 --
 
-INSERT INTO `pokemon` (`id_pokemon`, `nombre`, `descripcion`, `tipo`, `imagen`, `debilidades`, `fortalezas`) VALUES
-(1, 'Umbreon', 'Si se expone al aura de la luna, los anillos de su cuerpo relucen.', 'Siniestro', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/197.png', 'Bicho, Hada, Lucha', 'Fantasma, Psíquico'),
-(2, 'Venusaur', 'Puede convertir la luz del sol en energía. Por esa razón, es más poderoso en verano', 'Planta/Veneno', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png', 'Fuego, Hielo, Bicho, Volador,Psíquico', 'Roca, Tierra, Agua, Hada, Planta, Agua'),
-(3, 'Sableye', 'Hace su guarida en cuevas oscuras y come gemas.', 'Siniestro/Fantasma', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/302.png', 'Hada', 'Fantasma, Psíquico'),
-(4, 'Dratini', 'Muda muchas veces de piel mientras crece.', 'Dragón', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/147.png', 'Dragón, Hada, Hielo', 'Dragón'),
-(5, 'Gengar', 'Se oculta en las sombras y absorbe el calor de sus víctimas.', 'Fantasma/Veneno', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/094.png', 'Tierra, Fantasma, Siniestro', 'Hada, Fantasma, Planta, Psíquico'),
-(6, 'Lycanroc', 'Ataca con colmillos y garras afiladas.', 'Roca', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/745.png', 'Tierra, Lucha, Planta, Agua, Hierro', 'Fuego, Hielo, Volador, Bicho'),
-(7, 'Gible', 'Permanece oculto en cuevas y muerde con fuerza.', 'Dragón/Tierra', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/443.png', 'Hielo, Hada, Dragón', 'Dragón, Roca, Fuego, Eléctrico, Veneno, Hierro'),
-(8, 'Yamper', 'Genera electricidad al correr.', 'Eléctrico', 'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/835.png', 'Tierra', 'Agua, Volador');
+INSERT INTO `pokemon` (`id_pokemon`, `nombre`, `imagen`) VALUES
+(9, 'Garchomp', '/images/pokemon/1776472352179-802009.png'),
+(10, 'Gible', '/images/pokemon/1776472375651-859251.png'),
+(11, 'Mamoswine', '/images/pokemon/1776472415390-653946.png'),
+(12, 'Sneasler', '/images/pokemon/1776472431823-571425.png'),
+(13, 'venusaur', '/images/pokemon/1776477146945-77515.png'),
+(14, 'sableye', '/images/pokemon/1776477204643-918142.png'),
+(15, 'hydreigon', '/images/pokemon/1776477228992-418561.png');
 
 -- --------------------------------------------------------
 
@@ -207,13 +237,13 @@ ALTER TABLE `usuraios`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT de la tabla `pokemon`
 --
 ALTER TABLE `pokemon`
-  MODIFY `id_pokemon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pokemon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `privilegios`

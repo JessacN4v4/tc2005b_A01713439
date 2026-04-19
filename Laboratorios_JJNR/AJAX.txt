@@ -1,0 +1,10 @@
+En el sistema se implementa AJAX en las siguientes fucnionalidades:
+
+1. public/js/equipo.js —> POST /equipo/actualizar                                                                                             
+Cuando el equipo se llena con 6 Pokémon, enviarEquipoSiEstaLleno() hace un fetch con el array de IDs en JSON y el token CSRF en el header
+El servidor guarda el equipo y responde { ok: true } sin recargar la página                                                                   
+                                                                                                                                               
+2. public/js/pokedex.js —> GET /pokedex/detail/:name
+Cuando se hace clic en una card desbloqueada por primera vez, loadDetail() hace un fetch al servidor, que consulta PokeAPI y responde 
+con { types, description } en JSON
+El cliente usa ese JSON para construir el HTML del reverso de la card y actualizarlo en el DOM

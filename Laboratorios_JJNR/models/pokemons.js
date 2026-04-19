@@ -25,4 +25,10 @@ module.exports = class Pokemon {
     static findByName(nombre) {
         return db.execute('SELECT * FROM pokemon WHERE nombre = ?', [nombre]);
     }
+
+    static async deleteById(id) {
+        // Primero limpia referencias en equipo para no violar FK
+        await db.execute('DELETE FROM equipo WHERE pokemon_id = ?', [id]);
+        return db.execute('DELETE FROM pokemon WHERE id_pokemon = ?', [id]);
+    }
 };
