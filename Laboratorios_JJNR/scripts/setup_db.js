@@ -66,6 +66,19 @@ async function main() {
     `);
     console.log('Stored procedure sp_guardar_equipo creado.');
 
+    await connection.query('DROP PROCEDURE IF EXISTS sp_obtener_equipo');
+    await connection.query(`
+        CREATE PROCEDURE sp_obtener_equipo(IN p_usuario_id INT)
+        BEGIN
+            SELECT e.slot, p.id_pokemon, p.nombre, p.imagen
+            FROM equipo e
+            INNER JOIN pokemon p ON p.id_pokemon = e.pokemon_id
+            WHERE e.usuario_id = p_usuario_id
+            ORDER BY e.slot ASC;
+        END
+    `);
+    console.log('Stored procedure sp_obtener_equipo creado.');
+
     console.log('Base de datos "labs_pokemon" configurada correctamente.');
     await connection.end();
 }

@@ -2,12 +2,17 @@ const db = require('../utils/database');
 
 module.exports = class Equipo {
 
-    //Obtener equipo del usuario
+    //Obtener slots del equipo (usado internamente para limpiar/verificar)
     static getEquipo(idUser) {
         return db.execute(
             'SELECT slot, pokemon_id FROM equipo WHERE usuario_id = ? ORDER BY slot ASC',
             [idUser]
         );
+    }
+
+    //Obtener equipo completo con JOIN a pokemon (usa SP sp_obtener_equipo)
+    static getEquipoCompleto(idUser) {
+        return db.query('CALL sp_obtener_equipo(?)', [parseInt(idUser)]);
     }
 
     //Guardar equipo completo (usa stored procedure sp_guardar_equipo)

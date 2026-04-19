@@ -37,3 +37,22 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+DELIMITER $$
+
+-- SP2: Obtiene el equipo completo de un usuario con JOIN a pokemon.
+-- Reemplaza el patrón N+1 queries (1 SELECT slots + N SELECT pokemon por slot).
+
+DROP PROCEDURE IF EXISTS sp_obtener_equipo$$
+
+CREATE PROCEDURE sp_obtener_equipo(IN p_usuario_id INT)
+BEGIN
+    SELECT e.slot, p.id_pokemon, p.nombre, p.imagen
+    FROM equipo e
+    INNER JOIN pokemon p ON p.id_pokemon = e.pokemon_id
+    WHERE e.usuario_id = p_usuario_id
+    ORDER BY e.slot ASC;
+END$$
+
+DELIMITER ;

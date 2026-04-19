@@ -87,23 +87,17 @@ exports.getEquipo = async (request, response, next) => {
         const idUser = request.session.id_user;
         if (!idUser) return response.redirect('/login');
 
-        const [rows] = await Equipo.getEquipo(idUser);
+        const [[results], [pokemons]] = await Promise.all([
+            Equipo.getEquipoCompleto(idUser),
+            Pokemon.fetchAll()
+        ]);
 
+        const rows = results[0]; // primer result set del CALL
         const equipo = Array(6).fill(null);
-        rows.forEach(r => equipo[r.slot] = r.pokemon_id);
-
-        const equipoConDatos = await Promise.all(
-            equipo.map(async id => {
-                if (!id) return null;
-                const [p] = await Pokemon.findById(id);
-                return p[0];
-            })
-        );
-
-        const [pokemons] = await Pokemon.fetchAll();
+        rows.forEach(r => equipo[r.slot] = r);
 
         response.render('equipo', {
-            equipo: equipoConDatos,
+            equipo,
             pokemons,
             equipoLleno: rows.length === 6
         });
@@ -117,14 +111,13 @@ exports.getEquipo = async (request, response, next) => {
 exports.getDetalle = async (request, response, next) => {
     try {
         const idUser = request.session.id_user;
-        const [rows] = await Equipo.getEquipo(idUser);
+        const [results] = await Equipo.getEquipoCompleto(idUser);
+        const rows = results[0];
 
         const equipo = await Promise.all(
             rows.map(async r => {
-                const [p] = await Pokemon.findById(r.pokemon_id);
-                const db = p[0];
-                const vgc = await getPokemonVGC(db.nombre);
-                return { ...db, ...vgc };
+                const vgc = await getPokemonVGC(r.nombre);
+                return { ...r, ...vgc };
             })
         );
 
@@ -139,16 +132,14 @@ exports.getDetalle = async (request, response, next) => {
 exports.getPDF = async (request, response, next) => {
     try {
         const idUser = request.session.id_user;
-        const [rows] = await Equipo.getEquipo(idUser);
-
+        const [results] = await Equipo.getEquipoCompleto(idUser);
+        const rows = results[0];
         if (!rows.length) return response.status(400).send('No hay equipo guardado.');
 
         const equipo = await Promise.all(
             rows.map(async r => {
-                const [p] = await Pokemon.findById(r.pokemon_id);
-                const db = p[0];
-                const vgc = await getPokemonVGC(db.nombre);
-                return { ...db, ...vgc };
+                const vgc = await getPokemonVGC(r.nombre);
+                return { ...r, ...vgc };
             })
         );
 
