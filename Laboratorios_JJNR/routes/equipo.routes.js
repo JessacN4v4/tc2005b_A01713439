@@ -10,9 +10,15 @@ const isAuth = require('../middleware/is-auth');
 router.get('/equipo', isAuth, menuController.protegerRuta, equipoController.getEquipo);
 
 //Detalle del equipo
-router.get('/equipo/detalle',isAuth, menuController.protegerRuta, equipoController.getDetalle);
+router.get('/equipo/detalle', isAuth, menuController.protegerRuta, equipoController.getDetalle);
+
+//Descargar PDF del equipo
+router.get('/equipo/pdf', isAuth, equipoController.getPDF);
+
+//Limpiar equipo y volver al menú
+router.post('/equipo/limpiar', isAuth, equipoController.postLimpiar);
 
 //Recibir equipo desde frontend
-router.post('/equipo/actualizar',isAuth, menuController.protegerRuta, equipoController.postActualizar);
+router.post('/equipo/actualizar', isAuth, menuController.protegerRuta, equipoController.postActualizar);
 
 module.exports = router;

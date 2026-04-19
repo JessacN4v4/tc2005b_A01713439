@@ -1,5 +1,5 @@
 const Pokemon = require('../models/pokemons');
-const { getAllNonLegendary, getPokemonDetail } = require('../utils/pokeapi');
+const { getAllNonLegendary, getPokemonBasic } = require('../utils/pokeapi');
 
 exports.getPokedex = async (request, response, next) => {
     try {
@@ -46,7 +46,7 @@ exports.postNuevoPokemon = (request, response, next) => {
 // GET /pokedex/detail/:name  — JSON para el frontend
 exports.getApiDetail = async (request, response, next) => {
     try {
-        const data = await getPokemonDetail(request.params.name);
+        const data = await getPokemonBasic(request.params.name);
         response.json(data);
     } catch (err) {
         console.error('Error al obtener detalle de PokeAPI:', err);
