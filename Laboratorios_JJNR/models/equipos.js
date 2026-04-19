@@ -10,28 +10,14 @@ module.exports = class Equipo {
         );
     }
 
-    //Guardar equipo completo
+    //Guardar equipo completo (usa stored procedure sp_guardar_equipo)
     static async setEquipo(idUser, nuevoEquipo) {
-
-    if (!Array.isArray(nuevoEquipo) || nuevoEquipo.length !== 6) {
-        throw new Error("Equipo inválido");
+        if (!Array.isArray(nuevoEquipo) || nuevoEquipo.length !== 6) {
+            throw new Error('Equipo inválido');
+        }
+        const slots = nuevoEquipo.map(id => (id ? parseInt(id) : null));
+        return db.query('CALL sp_guardar_equipo(?, ?, ?, ?, ?, ?, ?)', [parseInt(idUser), ...slots]);
     }
-
-    //borrar equipo anterior
-    await db.execute('DELETE FROM equipo WHERE usuario_id = ?', [idUser]);
-
-    const inserts = nuevoEquipo
-        .map((idPokemon, index) => {
-            if (!idPokemon) return null;
-            return db.execute(
-                'INSERT INTO equipo (usuario_id, pokemon_id, slot) VALUES (?, ?, ?)',
-                [idUser, idPokemon, index]
-            );
-        })
-        .filter(Boolean);
-
-    return Promise.all(inserts);
-}
 
 
     //Verificar si esta lleno
